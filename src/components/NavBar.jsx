@@ -1,10 +1,13 @@
-function NavBar({pokemonIndex, handleClickNext, handleClickPrev, pokemonList}) {
+function NavBar({pokemonList, handleClick}) {
     return (
+        
         <div>
-            {pokemonIndex > 0 ? <button onClick={handleClickPrev}>Précédent</button> : <button onClick={handleClickPrev} hidden>Précédent</button>}
-            {pokemonIndex < pokemonList.length - 1 ? <button onClick={handleClickNext}>Suivant</button> : <button onClick={handleClickNext} hidden>Suivant</button>}
+        {pokemonList.map((pokemon, index) => (
+            <button key={pokemon.name} onClick={() => handleClick(index)}>
+               {pokemon.name}
+            </button>
+        ))}
         </div> 
-    )
-}
+    )}
 
 export default NavBar;
